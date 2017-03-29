@@ -1,12 +1,13 @@
 
 const THREE = require('three');
 const OrbitControls = require('three-orbit-controls')(THREE)
+
 import Stats from 'stats-js'
 import DAT from 'dat-gui'
-
+  
 // when the scene is done initializing, the function passed as `callback` will be executed
 // then, every frame, the function passed as `update` will be executed
-function init(callback, update, resizeFunction) {
+function init(callback, update) {
   var stats = new Stats();
   stats.setMode(1);
   stats.domElement.style.position = 'absolute';
@@ -30,7 +31,6 @@ function init(callback, update, resizeFunction) {
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setClearColor(0x020202, 0);
-    renderer.antialias = true;
 
     var controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
@@ -47,9 +47,7 @@ function init(callback, update, resizeFunction) {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
-
-      resizeFunction(framework);
-    }, false);
+    });
 
     // assign THREE.js objects to the object we will return
     framework.scene = scene;
@@ -60,7 +58,7 @@ function init(callback, update, resizeFunction) {
     (function tick() {
       stats.begin();
       update(framework); // perform any requested updates
-      // renderer.render(scene, camera); // render the scene
+      renderer.render(scene, camera); // render the scene
       stats.end();
       requestAnimationFrame(tick); // register to call this again when the browser renders a new frame
     })();
@@ -73,3 +71,6 @@ function init(callback, update, resizeFunction) {
 export default {
   init: init
 }
+
+export const PI = 3.14159265
+export const e = 2.7181718
