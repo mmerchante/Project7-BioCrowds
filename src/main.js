@@ -31,8 +31,8 @@ class Engine
 	initializeScene(scene)
 	{
 		var pointsGeometry = new THREE.Geometry();
-		var markersMaterial = new THREE.PointsMaterial( { color: 0x006600 } )
-		markersMaterial.size = .005;
+		var markersMaterial = new THREE.PointsMaterial( { color: 0x00aa00 } )
+		markersMaterial.size = .1;
 		markersMaterial.vertexColors = true;
 		var markers = this.map.markers;
 
@@ -417,12 +417,12 @@ function onLoad(framework)
 	// Choose from accepted values
 	gui.add(UserSettings, 'map', [ 'Map1', 'Map2', 'Map3' ] ).onChange(function(value) {
   
-  		var path = './images/map1.png';
+  		var path = 'images/map1.png';
 
   		if(value == 'Map2')
-  			path = './images/map2.png';
+  			path = 'images/map2.png';
   		else if(value == 'Map3')
-  			path = './images/map3.png';
+  			path = 'images/map3.png';
 
 		var txLoader = new THREE.TextureLoader();
 		txLoader.load(path, function(texture) {
@@ -437,7 +437,7 @@ function onLoad(framework)
 	});
 
 	var txLoader = new THREE.TextureLoader();
-	txLoader.load('./images/map2.png', function(texture) {
+	txLoader.load('images/map2.png', function(texture) {
 		var texturePixels = loadTexturePixels(texture);
 		engine = new Engine(16, 64, 750, texture, texturePixels);
 		engine.initialize(scene);
