@@ -31,7 +31,7 @@ class Engine
 	initializeScene(scene)
 	{
 		var pointsGeometry = new THREE.Geometry();
-		var markersMaterial = new THREE.PointsMaterial( { color: 0x00aa00 } )
+		var markersMaterial = new THREE.PointsMaterial( { color: 0x00ee00 } )
 		markersMaterial.size = .1;
 		markersMaterial.vertexColors = true;
 		var markers = this.map.markers;
